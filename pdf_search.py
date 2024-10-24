@@ -28,6 +28,11 @@ def search_keyword_in_pdf(pdf_file, regex_pattern):
     return None
 
 def search_in_folder(source_folder, regex_pattern, output_file):
+    # Clean the output file (open it in 'w' mode to clear the content)
+    with open(output_file, 'w') as out_file:
+        out_file.write('')  # This clears the file
+        out_file.flush()
+
     """Search for the regex pattern in all PDF files in the source folder and write the results to the output file."""
     # Get list of PDF files
     pdf_files = [f for f in os.listdir(source_folder) if f.endswith(".pdf")]
